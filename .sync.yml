@@ -1,0 +1,12 @@
+# PDK instructions
+---
+appveyor.yml:
+  delete: true
+.gitlab-ci.yml:
+  delete: true
+hiera.yaml:
+  delete: true
+data/common.yaml:
+  delete: true
+
+# vim: ts=2 sw=2 et
