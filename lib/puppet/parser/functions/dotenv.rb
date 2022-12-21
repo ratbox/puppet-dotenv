@@ -17,7 +17,20 @@ EOS
     lines << '# Managed by Puppet' << nil
 
     argv[0].each do |key, val|
-      lines << "#{key}=\"#{val}\""
+      if defined?(val)
+        case val
+        when TrueClass
+          lines << "#{key}=true"
+        when FalseClass
+          lines << "#{key}=false"
+        when Fixnum
+          lines << "#{key}=#{val}"
+        else
+          lines << "#{key}=\"#{val}\""
+        end
+      else
+        lines << "#{key}=null"
+      end
     end
 
     lines << nil
